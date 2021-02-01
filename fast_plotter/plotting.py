@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.colors as mc
 import logging
+import pickle
 logger = logging.getLogger(__name__)
 
 
@@ -475,6 +476,11 @@ def plot_ratio(data, sims, x, y, yerr, ax, error="both", ylim=[0., 2], ylabel="D
         draw(ax, "fill_between", x_axis, ys=["y1", "y2"],
              y2=1 + rel_s_err, y1=1 - rel_s_err, fill_val=1,
              color="gray", alpha=0.7)
+    
+    ratios = {"x_axis" : x_axis,
+              "ys" : ys}
+    outfile = open(ratios, 'wb')
+    pickle.dump(ratios, open("ratios.p", "wb"))
 
     ax.set_ylim(ylim)
     ax.grid(True)
