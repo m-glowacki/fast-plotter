@@ -478,7 +478,8 @@ def plot_ratio(data, sims, x, y, yerr, ax, error="both", ylim=[0., 2], ylabel="D
              color="gray", alpha=0.7)
     
     ratios = {"x_axis" : x_axis,
-              "ys" : ys}
+              "y" : ratio,
+              "yerr" : rel_d_err }
     pickle.dump(ratios, open("ratios.p", "wb"))
 
     ax.set_ylim(ylim)
